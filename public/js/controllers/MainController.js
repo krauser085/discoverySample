@@ -5,6 +5,9 @@ const tag = '[MainController]'
 function MainController() {
   // write something
   this.toString = () => console.log(tag)
+  this.init() = () => {
+
+  }
 }
 
 export default MainController
