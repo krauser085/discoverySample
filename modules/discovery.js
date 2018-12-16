@@ -8,7 +8,7 @@ let params = {
 }
 
 module.exports = {
-  query(queryStr) {
+  query(queryStr, filter = '') {
     params.query = queryStr
     return new Promise((res, rej) => {
       discovery.query(params, (err, response) => {
