@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Express</title>
+  <title>Discovery Sample</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <div class="container">
     <form>
-      <input type="text" placeholder="検索文を入力してください。" autofocus>
+      <input type="text" placeholder="検索文を入力してください。!!!!" autofocus>
       <button type="reset" class="btn-reset"></button>
     </form>
     <div class="content">
       <div id="search-result"></div>
     </div>
   </div>
-  <script src="./js/main.js"></script>
+  <% if (isIE) { %>
+    <script src="./js/main.js"></script>
+  <% } else { %>
+    <script src="./js/app.js"></script>
+  <% } %>
 </body>
 
 </html>

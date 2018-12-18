@@ -7,6 +7,7 @@ const indexRouter = require('./routes/index')
 const documentsRouter = require('./routes/documents')
 
 const app = express()
+app.set('view engine', 'ejs')
 
 app.use(logger('dev'))
 app.use(express.json())
