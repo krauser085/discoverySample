@@ -1,6 +1,6 @@
 const tag = '[View]'
 
-export default function View (el) {
+export default function View(el) {
   if (!el) throw new Error('View element undifined')
 
   this.el = el
@@ -10,7 +10,14 @@ export default function View (el) {
   }
 
   this.emit = function (event, data) {
-    const evt = new CustomEvent(event, { detail: data })
+    let evt
+    try {
+      evt = new CustomEvent(event, { detail: data })
+    } catch (err) {
+      // for IE11
+      evt = document.createEvent('CustomEvent')
+      evt.initCustomEvent(event, false, false, { data })
+    }
     this.el.dispatchEvent(evt)
     return this
   }

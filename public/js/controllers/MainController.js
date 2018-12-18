@@ -13,7 +13,11 @@ export default {
     // init form view
     formView = new FormView(document.querySelector('form'))
     formView.init()
-      .on('@submit', e => this.onSubmit(e.detail.input))
+      .on('@submit', e => {
+        console.log('1-1', JSON.stringify(e))
+        this.onSubmit(e.detail.input)
+        console.log('1-2')
+      })
       .on('@reset', e => this.onResetForm())
 
     // init ResultView
