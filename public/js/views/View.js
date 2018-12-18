@@ -11,12 +11,12 @@ export default function View(el) {
 
   this.emit = function (event, data) {
     let evt
-    try {
+    if (typeof window.CustomEvent === 'function')
       evt = new CustomEvent(event, { detail: data })
-    } catch (err) {
+    else {
       // for IE11
       evt = document.createEvent('CustomEvent')
-      evt.initCustomEvent(event, false, false, { data })
+      evt.initCustomEvent(event, false, false, data)
     }
     this.el.dispatchEvent(evt)
     return this

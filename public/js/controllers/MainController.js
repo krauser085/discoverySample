@@ -9,14 +9,12 @@ import SearchModel from '../models/SearchModel.js'
 const tag = '[MainController]'
 
 export default {
-  init () {
+  init() {
     // init form view
     formView = new FormView(document.querySelector('form'))
     formView.init()
       .on('@submit', e => {
-        console.log('1-1', JSON.stringify(e))
         this.onSubmit(e.detail.input)
-        console.log('1-2')
       })
       .on('@reset', e => this.onResetForm())
 
@@ -25,12 +23,13 @@ export default {
     resultView.init()
   },
 
-  search (query) {
+  search(query) {
     SearchModel.list(query)
       .then(data => this.onSearchResult(data))
+      .catch(err => { throw new Error(err) })
   },
 
-  renderView () {
+  renderView() {
     // console.log(tag, 'rednerView()')
     // TabView.setActiveTab(this.selectedTab)
 
@@ -44,11 +43,11 @@ export default {
 
     // ResultView.hide()
   },
-  onSubmit (input) {
+  onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
     this.search(input)
   },
-  onResetForm () {
+  onResetForm() {
     console.log(tag, 'onResetForm()')
     this.renderView()
   },

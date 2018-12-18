@@ -1,7 +1,7 @@
 export default {
   // get document from discovery
   list(query) {
-    try {
+    if (window.fetch) {
       return fetch('/documents', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -10,21 +10,18 @@ export default {
         .then(res => res.json())
         .then(json => json.documents)
         .catch(err => { throw new Error(err) })
-    } catch (err) {
+    }
+    else {
       // for IE11
       return new Promise((res, rej) => {
-        let hr = new XMLHttpRequest()
-        if (!hr) throw new Error('not able to create XMLHttpRequest')
-        hr.onreadystatechange = () => {
-          if (httpRequest.readyState === XMLHttpRequest.DONE) {
-            if (httpRequest.status >= 200 && httpRequest.status <= 300)
-              // TODO: implement returning result
-              alert(httpRequest.responseText);
-          }
-        }
-        hr.setRequestHeader('Content-Type', 'application/json')
-        hr.open('POST', '/documents')
-        hr.send(JSON.stringify({ query }))
+        const xhr = new XMLHttpRequest()
+        xhr.open('POST', '/documents', true)
+        xhr.setRequestHeader('Content-type', 'application/json')
+        xhr.onload = function () {
+          let documents = JSON.parse(this.responseText).documents
+          res(documents)
+        };
+        xhr.send(JSON.stringify({ query }))
       })
     }
   }
