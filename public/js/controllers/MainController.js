@@ -1,8 +1,12 @@
+// Views
 import FormView from '../views/FormView.js'
+import ResultView from '../views/ResultView.js'
+let formView, resultView
+
+// Models
 import SearchModel from '../models/SearchModel.js'
 
 const tag = '[MainController]'
-let formView
 
 export default {
   init () {
@@ -11,11 +15,17 @@ export default {
     formView.init()
       .on('@submit', e => this.onSubmit(e.detail.input))
       .on('@reset', e => this.onResetForm())
+
+    // init ResultView
+    resultView = new ResultView(document.getElementById('search-result'))
+    resultView.init()
   },
+
   search (query) {
     SearchModel.list(query)
-      .then(data => console.log(data))
+      .then(data => this.onSearchResult(data))
   },
+
   renderView () {
     // console.log(tag, 'rednerView()')
     // TabView.setActiveTab(this.selectedTab)
@@ -37,5 +47,8 @@ export default {
   onResetForm () {
     console.log(tag, 'onResetForm()')
     this.renderView()
+  },
+  onSearchResult(data) {
+    resultView.render(data)
   },
 }

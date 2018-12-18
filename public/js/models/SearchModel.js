@@ -7,6 +7,7 @@ export default {
       body: JSON.stringify({ query })
     })
       .then(res => res.json())
+      .then(json => json.documents)
       .catch(err => { throw new Error(err) })
   }
 }
