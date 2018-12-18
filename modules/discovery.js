@@ -4,7 +4,7 @@ const discovery = new DiscoveryV1(env.discovery.credential)
 
 let params = {
   environment_id: env.discovery.environment_id,
-  collection_id: env.discovery.collection_id
+  collection_id: env.discovery.collection_id,
 }
 
 module.exports = {

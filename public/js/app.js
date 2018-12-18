@@ -1,6 +1,5 @@
-import MainController from './controllers/MainController.js'
-const mainController = new MainController()
+import mainController from './controllers/MainController.js'
 
 document.addEventListener('DOMContentLoaded', () => {
-  mainController.toString()
+  mainController.init()
 })
