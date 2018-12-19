@@ -1,9 +1,9 @@
 const path = require('path');
 
 module.exports = {
-  entry: './public/js/app.js',
+  entry: './webpack-buffer.js',
   output: {
-    filename: 'main.js',
+    filename: 'app-ie.js',
     path: path.resolve(__dirname, 'public/js')
   },
   module: {

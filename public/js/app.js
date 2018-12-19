@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import mainController from './controllers/MainController.js'
 
 document.addEventListener('DOMContentLoaded', () => {
