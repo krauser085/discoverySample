@@ -28,7 +28,7 @@ export default {
   },
 
   renderView() {
-    console.log(tag, 'rednerView()')
+    console.log(tag, 'renderView()')
     resultView.hide()
   },
   onSubmit(input) {
