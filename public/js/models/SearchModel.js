@@ -1,6 +1,9 @@
+const tag = '[SearchModel]'
+
 export default {
   // get document from discovery
   list(query) {
+    console.log(tag, 'list()')
     if (window.fetch) {
       return fetch('/documents', {
         method: 'POST',

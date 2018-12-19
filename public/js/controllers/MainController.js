@@ -40,6 +40,7 @@ export default {
     this.renderView()
   },
   onSearchResult(data) {
+    console.log(tag, 'onSearchResult()', data)
     resultView.render(data)
   },
 }
