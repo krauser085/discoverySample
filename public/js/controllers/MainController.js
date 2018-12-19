@@ -28,18 +28,8 @@ export default {
   },
 
   renderView() {
-    // console.log(tag, 'rednerView()')
-    // TabView.setActiveTab(this.selectedTab)
-
-    // if (this.selectedTab === '추천 검색어') {
-    //   this.fetchSearchKeyword()
-    //   HistoryView.hide()
-    // } else {
-    //   this.fetchSearchHistory()
-    //   KeywordView.hide()
-    // }
-
-    // ResultView.hide()
+    console.log(tag, 'rednerView()')
+    resultView.hide()
   },
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
