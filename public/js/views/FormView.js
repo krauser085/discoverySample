@@ -1,11 +1,14 @@
 import View from './View.js'
 
+const tag = '[FormView]'
+
 export default function FormView (el) {
   View.call(this, el)
   this.inputEl = el.querySelector('[type=text]')
   this.resetEl = el.querySelector('[type=reset]')
 
   this.init = function () {
+    console.log(tag, 'init()')
     this.showResetBtn(false)
     this.bindEvents()
     return this
