@@ -1,8 +1,12 @@
 const request = require('request')
 const env = require('../env/dev.js')
 
+const tag = '[discovery]'
+
 module.exports = {
   query (queryStr, filter = '') {
+    console.log(tag, 'query:', queryStr, 'filter:', filter)
+
     return new Promise((res, rej) => {
       let params = {
         url: getUrl(queryStr, filter),
