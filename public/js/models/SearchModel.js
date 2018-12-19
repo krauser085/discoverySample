@@ -20,7 +20,7 @@ export default {
         xhr.onload = function () {
           let documents = JSON.parse(this.responseText).documents
           res(documents)
-        };
+        }
         xhr.send(JSON.stringify({ query }))
       })
     }

@@ -10,12 +10,10 @@ const tag = '[MainController]'
 
 export default {
   init() {
-    // init form view
+    // init FormView
     formView = new FormView(document.querySelector('form'))
     formView.init()
-      .on('@submit', e => {
-        this.onSubmit(e.detail.input)
-      })
+      .on('@submit', e => this.onSubmit(e.detail.input))
       .on('@reset', e => this.onResetForm())
 
     // init ResultView

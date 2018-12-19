@@ -1,7 +1,5 @@
 import View from './View.js'
 
-const tag = '[FormView]'
-
 export default function FormView (el) {
   View.call(this, el)
   this.inputEl = el.querySelector('[type=text]')

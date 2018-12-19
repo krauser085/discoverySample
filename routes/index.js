@@ -5,8 +5,7 @@ const mainController = require('../controllers/mainController.js')
 /* GET home page. */
 router.get('/', function (req, res, next) {
   // identify a browser
-  const userAgent = req.headers['user-agent']
-  const isIE = userAgent.includes('Trident')
+  const isIE = req.headers['user-agent'].includes('Trident')
 
   res.render('index', { isIE })
 })
